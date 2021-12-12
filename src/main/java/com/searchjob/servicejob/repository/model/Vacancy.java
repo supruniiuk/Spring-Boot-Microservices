@@ -33,6 +33,10 @@ public final class Vacancy {
         this.email = email;
     }
 
+    public long getId() {
+        return id;
+    }
+
     public String getTitle() {
         return title;
     }
