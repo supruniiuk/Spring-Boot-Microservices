@@ -1,13 +1,12 @@
-package com.searchjob.servicejob.api;
+package com.searchjob.servicevacancy.api;
 //already can get requests and send responses
-import com.searchjob.servicejob.repository.model.Vacancy;
-import com.searchjob.servicejob.service.VacancyService;
+import com.searchjob.servicevacancy.repository.model.Vacancy;
+import com.searchjob.servicevacancy.service.VacancyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
-import java.sql.Struct;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -18,12 +17,12 @@ public class VacancyController {
     private  final VacancyService vacancyService;
 
     @GetMapping
-    public ResponseEntity<List<com.searchjob.servicejob.repository.model.Vacancy>> index (){
-        final List<com.searchjob.servicejob.repository.model.Vacancy> vacancies =  vacancyService.fetchAll();
+    public ResponseEntity<List<com.searchjob.servicevacancy.repository.model.Vacancy>> index (){
+        final List<com.searchjob.servicevacancy.repository.model.Vacancy> vacancies =  vacancyService.fetchAll();
         return ResponseEntity.ok(vacancies);
 }
     @GetMapping("/{id}")
-    public ResponseEntity<com.searchjob.servicejob.repository.model.Vacancy> show(@PathVariable long id){
+    public ResponseEntity<com.searchjob.servicevacancy.repository.model.Vacancy> show(@PathVariable long id){
        try{
             final Vacancy vacancy = vacancyService.fetchById(id);
             return ResponseEntity.ok(vacancy);
@@ -32,7 +31,7 @@ public class VacancyController {
         }
     }
     @PostMapping
-    public ResponseEntity<Void> create(@RequestBody com.searchjob.servicejob.api.dto.Vacancy vacancy){
+    public ResponseEntity<Void> create(@RequestBody com.searchjob.servicevacancy.api.dto.Vacancy vacancy){
         final String title = vacancy.getTitle();
         final String typeOfEmployment = vacancy.getTypeOfEmployment();
         final String responsibilities = vacancy.getResponsibilities();
@@ -47,7 +46,7 @@ public class VacancyController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<Void> update(@PathVariable long id, @RequestBody com.searchjob.servicejob.api.dto.Vacancy vacancy){
+    public ResponseEntity<Void> update(@PathVariable long id, @RequestBody com.searchjob.servicevacancy.api.dto.Vacancy vacancy){
         final String title = vacancy.getTitle();
         final String typeOfEmployment = vacancy.getTypeOfEmployment();
         final String responsibilities = vacancy.getResponsibilities();

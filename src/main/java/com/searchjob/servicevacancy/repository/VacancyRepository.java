@@ -1,5 +1,5 @@
-package com.searchjob.servicejob.repository;
-import com.searchjob.servicejob.repository.model.Vacancy;
+package com.searchjob.servicevacancy.repository;
+import com.searchjob.servicevacancy.repository.model.Vacancy;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,7 +1,7 @@
-package com.searchjob.servicejob.service;
+package com.searchjob.servicevacancy.service;
 
-import com.searchjob.servicejob.repository.VacancyRepository;
-import com.searchjob.servicejob.repository.model.Vacancy;
+import com.searchjob.servicevacancy.repository.VacancyRepository;
+import com.searchjob.servicevacancy.repository.model.Vacancy;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

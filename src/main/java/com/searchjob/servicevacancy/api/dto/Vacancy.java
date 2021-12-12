@@ -1,4 +1,4 @@
-package com.searchjob.servicejob.api.dto; //data-transfer-object
+package com.searchjob.servicevacancy.api.dto; //data-transfer-object
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -1,6 +1,4 @@
-package com.searchjob.servicejob.repository.model;
-
-import lombok.Generated;
+package com.searchjob.servicevacancy.repository.model;
 
 import javax.persistence.*;
 

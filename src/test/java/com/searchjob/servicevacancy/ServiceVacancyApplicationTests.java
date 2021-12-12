@@ -1,10 +1,10 @@
-package com.searchjob.servicejob;
+package com.searchjob.servicevacancy;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ServiceJobApplicationTests {
+class ServiceVacancyApplicationTests {
 
     @Test
     void contextLoads() {
