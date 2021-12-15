@@ -3,7 +3,7 @@ package com.searchjob.servicevacancy.api.dto; //data-transfer-object
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data //get set toString...
+@Data
 @NoArgsConstructor
 public final class Vacancy {
     private String title;

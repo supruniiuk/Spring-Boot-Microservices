@@ -1,5 +1,4 @@
 package com.searchjob.servicevacancy.api;
-//already can get requests and send responses
 import com.searchjob.servicevacancy.repository.model.Vacancy;
 import com.searchjob.servicevacancy.service.VacancyService;
 import lombok.RequiredArgsConstructor;
@@ -40,7 +39,7 @@ public class VacancyController {
         final String email = vacancy.getEmail();
         final long id = vacancyService.create(title, typeOfEmployment, responsibilities, skills, employer, email);
 
-        final String location = String.format("/vacancy/%d", id);
+        final String location = String.format("/vacancies/%d", id);
 
         return ResponseEntity.created(URI.create(location)).build();
     }
