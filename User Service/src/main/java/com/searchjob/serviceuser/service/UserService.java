@@ -41,6 +41,7 @@ public final class UserService {
         final User user = maybeUser.get();
         if(firstname != null && !firstname.isBlank()) user.setFirstname(firstname);
         if(lastname != null && !lastname.isBlank()) user.setLastname(lastname);
+        if(email != null && !email.isBlank()) user.setEmail(email);
 
         userRepository.save(user);
     }

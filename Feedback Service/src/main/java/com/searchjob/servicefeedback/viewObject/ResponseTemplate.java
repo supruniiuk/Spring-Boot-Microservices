@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public final class ResponseTemplate {
-    private Vacancy vacancy;
     private Feedback feedback;
+    private Vacancy vacancy;
+    private User user;
+
 }

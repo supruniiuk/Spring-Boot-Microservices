@@ -1,5 +1,6 @@
 package com.searchjob.servicefeedback.api;
 
+import com.searchjob.servicefeedback.viewObject.ResponseTemplate;
 import com.searchjob.servicefeedback.repository.model.Feedback;
 import com.searchjob.servicefeedback.service.FeedbackService;
 import lombok.RequiredArgsConstructor;
@@ -65,4 +66,8 @@ public class FeedbackController {
         return ResponseEntity.ok().build();
     }
 
+    @GetMapping("/view/{id}")
+    public ResponseTemplate getFeedbackWithVacancyAndUser(@PathVariable long id){
+        return feedbackService.getFeedbackWithVacancyAndUser(id);
+    }
 }

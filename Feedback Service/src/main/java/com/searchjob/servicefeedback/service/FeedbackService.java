@@ -1,9 +1,13 @@
 package com.searchjob.servicefeedback.service;
 
+import com.searchjob.servicefeedback.viewObject.ResponseTemplate;
+import com.searchjob.servicefeedback.viewObject.User;
+import com.searchjob.servicefeedback.viewObject.Vacancy;
 import com.searchjob.servicefeedback.repository.FeedbackRepository;
 import com.searchjob.servicefeedback.repository.model.Feedback;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,6 +16,8 @@ import java.util.Optional;
 @Service
 public final class FeedbackService {
     private final FeedbackRepository feedbackRepository;
+    private final RestTemplate restTemplate;
+
 
     public List<Feedback> fetchAll() {
         return feedbackRepository.findAll();
@@ -51,4 +57,24 @@ public final class FeedbackService {
         feedbackRepository.deleteById(id);
     }
 
+    public ResponseTemplate getFeedbackWithVacancyAndUser(Long id){
+        ResponseTemplate viewObject = new ResponseTemplate();
+        final Feedback feedback;
+        final Optional<Feedback> maybeFeedback = feedbackRepository.findById(id);
+        if(maybeFeedback.isEmpty()) throw new IllegalArgumentException("Feedback not found");
+        else {
+            feedback = maybeFeedback.get();
+
+            String userURL = "http://localhost:8082/users/";
+            final User user = restTemplate.getForObject(userURL + feedback.getUserId(), User.class);
+
+            String vacancyURL = "http://localhost:8081/vacancies/";
+            final Vacancy vacancy = restTemplate.getForObject(vacancyURL + feedback.getVacancyId(), Vacancy.class);
+
+            viewObject.setUser(user);
+            viewObject.setVacancy(vacancy);
+            viewObject.setFeedback(feedback);
+            return viewObject;
+        }
+    }
 }

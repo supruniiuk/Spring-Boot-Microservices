@@ -1,4 +1,5 @@
 package com.searchjob.servicefeedback.viewObject;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
