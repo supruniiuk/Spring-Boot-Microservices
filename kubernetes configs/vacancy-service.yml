@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-vacancy
+spec:
+  selector:
+    matchLabels:
+      app: service-vacancy
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: service-vacancy
+    spec:
+      containers:
+        - name: server
+          image: yuliiasupruniuk/service-vacancy
+          ports:
+            - containerPort: 8081
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-vacancy-svc
+spec:
+  selector:
+    app: service-vacancy
+  type: NodePort
+  ports:
+    - port: 8081
+      nodePort: 30001

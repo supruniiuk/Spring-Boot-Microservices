@@ -1,8 +1,8 @@
 FROM openjdk:17-alpine
 
 WORKDIR /opt/server
-COPY ./target/service-user-0.0.1-SNAPSHOT.jar server.jar
+COPY ./target/service-user-0.0.1-SNAPSHOT.jar service-user.jar
 
-EXPOSE 8080
+EXPOSE 8082
 
-ENTRYPOINT ["java", "-jar", "server.jar"]
+ENTRYPOINT ["java", "-jar", "service-user.jar"]
