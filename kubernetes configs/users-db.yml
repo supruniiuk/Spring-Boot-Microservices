@@ -1,42 +1,42 @@
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: service-user
+  name: users-db
 spec:
+  replicas: 1
   selector:
     matchLabels:
-      app: service-user
-  replicas: 1
+      app: users-db
   template:
     metadata:
       labels:
-        app: service-user
+        app: users-db
     spec:
       containers:
         - env:
-            - name: DB_SERVER
-              value: users-db
             - name: POSTGRES_DB
               value: users
             - name: POSTGRES_PASSWORD
               value: "timofey"
             - name: POSTGRES_USER
               value: postgres
-          name: server
-          image: yuliiasupruniuk/service-user
+          image: postgres
+          imagePullPolicy: ""
+          name: users-db
           ports:
-            - containerPort: 8082
+            - containerPort: 5432
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: service-user-svc
+  name: users-db
 spec:
-  selector:
-    app: service-user
-  type: NodePort
   ports:
-    - port: 8082
-      nodePort: 30002
+    - name: "5432"
+      port: 5432
+      targetPort: 5432
+  selector:
+    app: users-db
