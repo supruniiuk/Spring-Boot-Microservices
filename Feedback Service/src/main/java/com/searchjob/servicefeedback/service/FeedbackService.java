@@ -65,10 +65,10 @@ public final class FeedbackService {
         else {
             feedback = maybeFeedback.get();
 
-            String userURL = "http://service-users:8082/users/";
+            String userURL = "http://localhost:8082/users/";
             final User user = restTemplate.getForObject(userURL + feedback.getUserId(), User.class);
 
-            String vacancyURL = "http://service-vacancy:8081/vacancies/";
+            String vacancyURL = "http://localhost:8081/vacancies/";
             final Vacancy vacancy = restTemplate.getForObject(vacancyURL + feedback.getVacancyId(), Vacancy.class);
 
             viewObject.setUser(user);
